@@ -10,30 +10,32 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    print("I'm.. \n Alive {0.user}".format(client))
-
-    
+    print("It is Alive!!! 🤖 {0.user}".format(client))
 
 @client.event
 async def on_reaction_add(reaction,user):
-    print("TESTING")
     channel = reaction.message.channel
-    await channel.send("REACTION ADDED")
+    
+    #828078138277888000 is the bot ID
+    if user.id != 828078138277888000 and reaction.message.author.name == client.user.name:
+        if reaction.emoji == "👍":
+            await channel.send("Thanks for your feedback")
 
-    def check(m):
-        return m.content == 'hello' and m.channel == channel
-
-    msg = await client.wait_for('message', check=check)
-    await channel.send('Hello {.author}!'.format(msg))
+        if reaction.emoji == "👎":
+            await channel.send("Ok.. I will try to improve")
     
 @client.event
 async def on_message(message):
     if message.content.startswith('>hi'):
         channel = message.channel
-        await channel.send("hi")
+        
+        thisMessage = await channel.send("hi")
+        await thisMessage.add_reaction('👍')
+        await thisMessage.add_reaction('👎')
 
         def check(m):
             return m.content == 'hello' and m.channel == channel
+
         msg = await client.wait_for('message', check=check)
         await channel.send('Hello {.author}!'.format(msg))
 

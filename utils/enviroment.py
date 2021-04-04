@@ -8,7 +8,7 @@ class EnvVars():
         self.PUBLIC_KEY = ''
         self.TOKEN = ''
 
-        dotenv_path = join(dirname(__file__), '.env')
+        dotenv_path = join(dirname(__file__), '../.env')
         load_dotenv(dotenv_path)
 
         self.APLICATION_ID = os.environ.get("APLICATION_ID")

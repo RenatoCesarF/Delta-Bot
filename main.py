@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import utils.enviroment as enviroment
+from commandHandler import commandHandler
 import discord
 import os
 
@@ -26,28 +27,7 @@ async def on_reaction_add(reaction,user):
     
 @client.event
 async def on_message(message):
-    if message.content.startswith('>hi'):
-        channel = message.channel
-        
-        thisMessage = await channel.send("hi")
-        await thisMessage.add_reaction('👍')
-        await thisMessage.add_reaction('👎')
-
-        def check(m):
-            return m.content == 'hello' and m.channel == channel
-
-        msg = await client.wait_for('message', check=check)
-        await channel.send('Hello {.author}!'.format(msg))
-
-
-    if message.content.startswith('>img'):
-        channel = message.channel
-        
-        await channel.send("https://via.placeholder.com/150")
-
-
-        msg = await client.wait_for('message', check=check)
-        await channel.send('Hello {.author}!'.format(msg))
+    await commandHandler(message)
 
 
 client.run(env.TOKEN)

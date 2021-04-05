@@ -4,14 +4,12 @@ from commandHandler import commandHandler
 import discord
 import os
 
-
 env =  enviroment.EnvVars()
 client = discord.Client()
 
-
 @client.event
 async def on_ready():
-    print("It is Alive!!! 🤖 {0.user}".format(client))
+    print("\n It is Alive!!! 🤖\n".format(client))
 
 @client.event
 async def on_reaction_add(reaction,user):

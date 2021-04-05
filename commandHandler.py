@@ -2,6 +2,7 @@ import discord
 
 from commands.whatsup import whatsUp
 from commands.meme import meme
+from commands.help import help
 
 async def commandHandler(message):
     if message.content[0] == '>':
@@ -10,14 +11,16 @@ async def commandHandler(message):
 
         arguments = tokens[1:] #the arguments are everything after the command
 
-        if command.startswith('hi'):
+        if command == 'hi':
             channel = message.channel
+            await channel.send("hi")
             
-            thisMessage = await channel.send("hi")
 
-        if command.startswith('meme'):
+        elif command == 'meme':
             await meme(message,arguments)
 
-        if command.startswith('whatsup') or command.startswith('>WHATSUP'):
+        elif command == 'whatsup' or command == '>WHATSUP':
             await whatsUp(message)
         
+        elif command == 'help':
+            await help(message)

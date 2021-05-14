@@ -11,6 +11,3 @@ async def meme(message,arguments):
     print(secondPart)
     
     thisMessage = await channel.send("https://via.placeholder.com/150")
-
-    await thisMessage.add_reaction('👍')
-    await thisMessage.add_reaction('👎')

@@ -2,6 +2,7 @@ import discord
 
 from commands.whatsup import whatsUp
 from commands.meme import meme
+from commands.help import help
 
 async def commandHandler(message):
     if message.content[0] != '>':

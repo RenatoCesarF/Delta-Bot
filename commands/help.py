@@ -1,17 +1,19 @@
+import discord
+from discord.ext import commands
 
+class HelpCommand(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        self.bot.remove_command('help')
 
-async def help(message):
-    channel = message.channel
+    @commands.command(name="help")
+    async def _help(self, ctx):
+        await ctx.send( """ >>> 
+                ** Comands **
+          
+                    `hi` Say Hi!  `whatsup` Say !
+          
+        """)
 
-    await channel.send(""" 
-    >>> 
-    ** Comands **
-
-    ```css
-    #whatsup: Say whatsup in a random way
-    .whatsup
-    [whatsup]
-    
-    [meme] .<phrase>
-    ```
-    """)
+def setup(bot):
+    bot.add_cog(HelpCommand(bot))

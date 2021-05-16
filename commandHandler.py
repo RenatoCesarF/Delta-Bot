@@ -11,16 +11,20 @@ async def commandHandler(message):
     tokens = message.content.split(' ')
     command = tokens[0][1:]#the command is the first word starting from the second character
 
-    arguments = tokens[1:] #the arguments are everything after the command
+    params = tokens[1:] #the arguments are everything after the command
+     
+    if command.startswith('help'):
+        await help(message)
 
     if command.startswith('hi'):
         channel = message.channel
-        
         thisMessage = await channel.send("hi")
 
     if command.startswith('meme'):
-        await meme(message,arguments)
+        await meme(message,params)
 
     if command.startswith('whatsup') or command.startswith('>WHATSUP'):
         await whatsUp(message)
+
+    
     

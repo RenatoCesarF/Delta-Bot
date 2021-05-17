@@ -4,6 +4,8 @@ import utils.enviroment as enviroment
 import locale
 import time
 
+
+import sys
 import discord
 from discord import utils
 from discord.ext import commands

@@ -12,6 +12,8 @@ class MemeCommand(commands.Cog):
     async def _meme(self, ctx, template = '', *, params = ''):
         if template == '' or template == 'help':
             await ctx.send("You need to Add a **template** followed by some **params**, write `>help meme` to see some templates")
+        
+       
 
         if next(item for item in templates if item["name"] == template) in templates:
             templateLink = next(item for item in templates if item["name"] == template)['link']

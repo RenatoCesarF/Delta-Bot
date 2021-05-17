@@ -35,6 +35,7 @@ class Bot(commands.AutoShardedBot):
 
     async def on_ready(self):
         print("\n It's  Alive!! \n")
+        sys.stdout.flush()
         end_time = time.time() - start_time
         await self.change_presence(status=discord.Status.online)
 

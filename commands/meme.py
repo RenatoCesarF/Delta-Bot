@@ -1,8 +1,7 @@
 import discord
 from discord.ext import commands
 
-BASE_LINK='https://api.memegen.link/images'
-templates = [ 'mini-keanu',]
+templates = [ 'mini-keanu','sparta','buzz']
 
 
 
@@ -12,9 +11,15 @@ class MemeCommand(commands.Cog):
 
     
     @commands.command(name="meme")
-    async def _meme(self, ctx, template, *, params):
+    async def _meme(self, ctx, template = '', *, params = ''):
+        
+        if template == '' or template == 'help':
+            await ctx.send("You need to Add a **template** followed by some **params**, write `>help meme` to see some templates")
+
         if template in templates:
-            await ctx.send(f"{BASE_LINK}/{template}/{'/'.join(param for param in params.split(' '))}.png")
+            link = f"https://api.memegen.link/images/{template}/{'/'.join(param.replace(' ', '_') for param in params.split(','))}.png"
+            await ctx.send(link)
+          
 
 
 def setup(bot):

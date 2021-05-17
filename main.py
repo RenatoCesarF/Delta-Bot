@@ -40,9 +40,9 @@ class Bot(commands.AutoShardedBot):
 
   
                          
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, event: RawReactionActionEvent):
-        print(event)
+    # @commands.Cog.listener()
+    # async def on_raw_reaction_add(self, event: RawReactionActionEvent):
+    #     print(event)
         # channel = self.reaction.message.channel
             
         #     #828078138277888000 is the bot ID

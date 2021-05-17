@@ -8,12 +8,14 @@ class HelpCommand(commands.Cog):
 
     @commands.command(name="help")
     async def _help(self, ctx):
-        await ctx.send( """ >>> 
-                ** Comands **
-          
-                    `hi` Say Hi!  `whatsup` Say !
-          
-        """)
+        embed=discord.Embed(title="Commands", url="https://realdrewdata.medium.com/", description="Some help commands to show all we have", color=0x69386d)
+        embed.add_field(name="🔀 Random", value="`>help random`", inline=True)
+        embed.add_field(name="🐸 Meme", value="`>help meme`", inline=True)
+        embed.set_footer(text="footer")
+        await ctx.send(embed=embed)
+
+        #  Commands
+
 
 def setup(bot):
     bot.add_cog(HelpCommand(bot))
